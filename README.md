@@ -11,12 +11,99 @@ forked and extended by [Peter Marheine](https://github.com/tari)
 ([repo](https://github.com/tari/calctype)). This repo is a re-organised
 amalgamation of both, with the original tools ported to a C++ CLI.
 
+## Table of contents
+
+* [CalcType](#calctype)
+    * [Table of contents](#table-of-contents)
+    * [Documentation](#documentation)
+    * [Building](#building)
+        * [Requirements](#requirements)
+        * [Configuration](#configuration)
+        * [Standalone](#standalone)
+        * [VS Code](#vs-code)
+    * [Installation](#installation)
+        * [Additional requirements](#additional-requirements)
+        * [Install](#install)
+            * [Standalone](#standalone-1)
+            * [VS Code](#vs-code-1)
+    * [Other build commands](#other-build-commands)
+        * [Clean](#clean)
+            * [Standalone](#standalone-2)
+            * [VS Code](#vs-code-2)
+    * [Code structure](#code-structure)
+    * [Version control](#version-control)
+    * [License](#license)
+
 ## Documentation
 
 * POSIX shell commands to be run as user are denoted by shell code blocks
 * Text to be substituted in shell commands is capitalised and encapsulated in
 angle brackets
 * 'Visual Studio Code' and 'Code - OSS' are abbreviated to VS Code
+
+## Building
+
+### Requirements
+
+* [`libfxcg`](https://github.com/lunar-natalie/libfxcg)
+* `make`
+* `sh3eb-elf-binutils`
+* `sh3eb-elf-gcc` with C17 support
+
+### Configuration
+
+* Add the following to `.env.mk`:
+
+    ```Makefile
+    FXCGSDK=<PATH_TO_SDK>
+    ```
+
+### Standalone
+
+```Shell
+make
+```
+* Output: `libcalctype.a`
+
+### VS Code
+
+* Run Build Task (`Build library`)
+    * Default keybind: `shift + ctrl/cmd + b`
+    * Output: `libcalctype.a`
+
+## Installation
+
+(TODO)
+
+### Additional requirements
+
+* `sudo`
+
+### Install
+
+#### Standalone
+
+```Shell
+sudo make install
+```
+
+#### VS Code
+
+* Run Task `Install library`
+
+## Other build commands
+
+### Clean
+
+#### Standalone
+
+```Shell
+make clean
+```
+
+#### VS Code
+
+* Run Task `Clean build environment`
 
 ## Code structure
 

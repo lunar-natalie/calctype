@@ -18,8 +18,8 @@
 /// You should have received a copy of the GNU General Public License
 /// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+#include "calctype.h"
 #include "platform.h"
-#include <calctype.h>
 
 unsigned int calctype_get_text_width(const struct CalcTypeFont *font,
 	const char *text)

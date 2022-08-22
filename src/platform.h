@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include <calctype.h>
+#include "calctype.h"
 
 /// @return Pointer to start of video memory.
 unsigned char *calctype_get_vram(void);

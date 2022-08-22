@@ -19,7 +19,7 @@
 /// along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 #include "../platform.h"
-#include <calctype.h>
+#include "calctype.h"
 
 #include <fxcg/display.h>
 
