@@ -20,25 +20,46 @@
 
 #pragma once
 
-#include <fxcg/display.h>
-
 /// @brief Main font data structure.
 struct CalcTypeFont {
-	// Height of the font line in pixels.
+	// Height of the font line, in pixels.
 	unsigned int height;
 
-	// y-offset of the font line.
+	// y-offset of the font line, in pixels.
 	unsigned int base;
 
-	// Width of each character in sub-pixels.
+	// Width of each character, in sub-pixels.
 	unsigned int width;
 
-	// Character data.
+	// Glyph data and metadata. Data is encoded in RGB bytes of 3:4:1 for
+	// each pixel. Metadata is stored in the format of
+	// struct CalcTypeGlyphMetadata.
 	const unsigned char *data;
 
-	// Offset between each char in the character data, minus 32. 0xFFFF if
-	// not available.
-	unsigned short data_offset[224];
+	// Offset of the metadata of each glyph in the font data, minus 32.
+	// 0xFFFF if unavailable.
+	unsigned short metadata_offset[224];
+};
+
+/// @brief Font glyph metadata.
+struct CalcTypeGlyphMetadata {
+	// x-offset, in sub-pixels.
+	signed char x_offset;
+
+	// y-offset, in pixels.
+	signed char y_offset;
+
+	// Offset to add to the x-coordinate for the next glyph.
+	unsigned char x_advance;
+
+	// Width, in pixels.
+	unsigned char width;
+
+	// Height, in pixels.
+	unsigned char height;
+
+	// Internal helper pointer for glyph data.
+	unsigned char data[1];
 };
 
 #ifdef __cplusplus
@@ -48,7 +69,7 @@ extern "C"
 /// @param font
 /// @param text
 /// @return Width in pixels.
-unsigned int calctype_get_text_width(const struct CalcTypeFont &font,
+unsigned int calctype_get_text_width(const struct CalcTypeFont *font,
 	const char *text);
 
 #ifdef __cplusplus
@@ -61,7 +82,8 @@ extern "C"
 /// @param y y-coordinate of first character.
 /// @param color
 /// @param vram Start of video memory. Use 0 to specify device defaults.
-/// @param pitch Use 0 to specify device defaults.
-void calctype_draw(const struct CalcTypeFont &font, const char *text,
-	unsigned int x, unsigned int y, color_t color, color_t *vram,
-	unsigned int pitch);
+/// @param pitch Number of monospaced glyphs per inch. Use 0 to specify device
+/// defaults.
+void calctype_draw(const struct CalcTypeFont *font, const char *text,
+	unsigned int x, unsigned int y, unsigned short color,
+	unsigned char *vram, unsigned int pitch);
