@@ -28,7 +28,7 @@ struct CalcTypeFont {
 	// y-offset of the font line, in pixels.
 	unsigned int base;
 
-	// Width of each character, in sub-pixels.
+	// Width of each glyph, in sub-pixels.
 	unsigned int width;
 
 	// Glyph data and metadata. Data is encoded in RGB bytes of 3:4:1 for
