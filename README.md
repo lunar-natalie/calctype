@@ -26,10 +26,13 @@ amalgamation of both, with the original tools ported to a C++ CLI.
         * [Install](#install)
             * [Standalone](#standalone-1)
             * [VS Code](#vs-code-1)
-    * [Other build commands](#other-build-commands)
-        * [Clean](#clean)
+        * [Uninstall](#uninstall)
             * [Standalone](#standalone-2)
             * [VS Code](#vs-code-2)
+    * [Other build commands](#other-build-commands)
+        * [Clean](#clean)
+            * [Standalone](#standalone-3)
+            * [VS Code](#vs-code-3)
     * [Code structure](#code-structure)
     * [Version control](#version-control)
     * [License](#license)
@@ -90,6 +93,18 @@ sudo make install
 #### VS Code
 
 * Run Task `Install library`
+
+### Uninstall
+
+#### Standalone
+
+```Shell
+sudo make uninstall
+```
+
+#### VS Code
+
+* Run Task `Uninstall library`
 
 ## Other build commands
 
