@@ -81,8 +81,8 @@ extern "C"
 /// @param x x-coordinate of first character.
 /// @param y y-coordinate of first character.
 /// @param color
-/// @param vram Start of video memory. Use 0 to specify device defaults.
-/// @param pitch Number of monospaced glyphs per inch. Use 0 to specify device
+/// @param vram Start of video memory. Use 0 to specify platform defaults.
+/// @param pitch Number of monospaced glyphs per inch. Use 0 to specify platform
 /// defaults.
 void calctype_draw(const struct CalcTypeFont *font, const char *text,
 	unsigned int x, unsigned int y, unsigned short color,
