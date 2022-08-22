@@ -68,7 +68,7 @@ extern "C"
 /// @brief Gets the displayed width of a string using the given font.
 /// @param font
 /// @param text
-/// @return Width in pixels.
+/// @return Width, in pixels.
 unsigned int calctype_get_text_width(const struct CalcTypeFont *font,
 	const char *text);
 
