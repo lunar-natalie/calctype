@@ -4,6 +4,9 @@
         {
             "label": "Build library",
             "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/libcalctype"
+            },
             "command": "make",
             "group": {
                 "kind": "build",
@@ -13,6 +16,9 @@
         {
             "label": "Install library",
             "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/libcalctype"
+            },
             "command": "sudo",
             "args": [
                 "make",
@@ -23,6 +29,9 @@
         {
             "label": "Uninstall library",
             "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/libcalctype"
+            },
             "command": "sudo",
             "args": [
                 "make",
@@ -31,13 +40,110 @@
             "problemMatcher": []
         },
         {
-            "label": "Clean build environment",
+            "label": "Clean library build environment",
             "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/libcalctype"
+            },
             "command": "make",
             "args": [
                 "clean"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "(Debug) Build CalcTyper",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/debug"
+            },
+            "command": "make",
+            "dependsOn": [
+                "(Debug) CMake CalcTyper"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "(Debug) CMake CalcTyper",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/debug"
+            },
+            "command": "cmake",
+            "args": [
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "${workspaceFolder}/calctyper"
+            ],
+            "dependsOn": [
+                "(Debug) Create CalcTyper build directory"
+            ]
+        },
+        {
+            "label": "(Debug) Create CalcTyper build directory",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceFolder}/calctyper/build/debug"
+        },
+        {
+            "label": "(Debug) Clean CalcTyper build environment",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/debug"
+            },
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        },
+        {
+            "label": "(Debug) Remove CalcTyper build directory",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/calctyper/build/debug"
+        },
+        {
+            "label": "(Release) Build CalcTyper",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/release"
+            },
+            "command": "make",
+            "dependsOn": [
+                "(Release) CMake"
+            ]
+        },
+        {
+            "label": "(Release) CMake CalcTyper",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/release"
+            },
+            "command": "cmake",
+            "args": [
+                "${workspaceFolder}/calctyper"
+            ],
+            "dependsOn": [
+                "(Release) Create CalcTyper build directory"
+            ]
+        },
+        {
+            "label": "(Release) Create CalcTyper build directory",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceFolder}/calctyper/build/release"
+        },
+        {
+            "label": "(Release) Clean CalcTyper build environment",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/calctyper/build/release"
+            },
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        },
+        {
+            "label": "(Release) Remove CalcTyper build directory",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/calctyper/build/release"
         }
     ]
 }

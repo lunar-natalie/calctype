@@ -56,8 +56,5 @@
     "[makefile]": {
         "editor.tabSize": 8,
    		"editor.insertSpaces": false
-    },
-    "files.associations": {
-        "display.h": "c"
     }
 }

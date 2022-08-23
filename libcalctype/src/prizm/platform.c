@@ -1,8 +1,8 @@
-/// @file prizm.c
+/// @file platform.c
 /// @author Natalie Wiggins (islifepeachy@outlook.com)
 /// @brief Platform-specific rendering utilities for the Casio Prizm.
 /// @version 0.1
-/// @date 2022-08-22
+/// @date 2022-08-23
 ///
 /// @copyright Copyright (c) 2022 The CalcType Authors.
 /// This program is free software: you can redistribute it and/or modify
