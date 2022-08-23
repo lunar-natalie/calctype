@@ -16,6 +16,7 @@ amalgamation of both, with the original tools ported to a C++ CLI.
 * [CalcType](#calctype)
     * [Table of contents](#table-of-contents)
     * [Documentation](#documentation)
+    * [Usage](#usage)
     * [Building](#building)
         * [Requirements](#requirements)
         * [Configuration](#configuration)
@@ -44,6 +45,10 @@ amalgamation of both, with the original tools ported to a C++ CLI.
 * Text to be substituted in shell commands is capitalised and encapsulated in
 angle brackets
 * 'Visual Studio Code' and 'Code - OSS' are abbreviated to VS Code
+
+## Usage
+
+To link with your program using LD, use `-lcalctype`.
 
 ## Building
 
