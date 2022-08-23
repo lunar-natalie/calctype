@@ -64,11 +64,11 @@ Targets:
 
 Targets:
 * Debug:
-    * Run Build Task (`(Debug) Build`)
+    * Run Build Task (`(Debug) Build CalcTyper`)
         * Default keybind: `shift + ctrl/cmd + b`
         * Output: `build/debug/calctyper`
 * Release:
-    * Run task `(Release) Build`
+    * Run task `(Release) Build CalcTyper`
         * Output: `build/release/calctyper`
 
 ## Installation
@@ -121,7 +121,7 @@ Requires the [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vsco
 extension from the VS Code Marketplace.
 
 * Open a source file
-    * Run the default launch task (`(Debug) (gdb) Launch`)
+    * Run the default launch task (`(Debug) (gdb) Launch CalcTyper`)
         * Default keybind: `F5`
 
 ## Internationalization
@@ -139,10 +139,10 @@ This will generate `locale/calctyper.pot`.
 ### Generating PO files
 
 ```shell
-msginit -i locale/gelcube.pot -o locale/[LANG].po -l [LOCALE]
+msginit -i locale/gelcube.pot -o locale/<LANG>.po -l <LOCALE>
 ```
 
-Edit `locale/[LANG].po` as required.
+Edit `locale/<LANG>.po` as required.
 
 ### Updating existing PO files
 

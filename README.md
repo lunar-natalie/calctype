@@ -17,6 +17,13 @@ amalgamation of both, with the original tools ported to a C++ CLI.
 
 [Font data generator for libcalctype](calctyper/README.md).
 
+## Documentation
+
+* POSIX shell commands to be run as user are denoted by shell code blocks
+* Text to be substituted in shell commands is capitalised and encapsulated in
+angle brackets
+* 'Visual Studio Code' and 'Code - OSS' are abbreviated to VS Code
+
 ## Version control
 
 Commit messages should follow [this convention](https://www.conventionalcommits.org/)
