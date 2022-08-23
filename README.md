@@ -6,7 +6,7 @@ rendering concepts.
 Originally created by [tswilliamson](https://github.com/tswilliamson)
 ([repo](https://github.com/tswilliamson/calctype)). The original project was
 forked and extended by [Peter Marheine](https://github.com/tari)
-([repo](https://github.com/tari/calctype)). This repo is a re-organised
+([repo](https://github.com/tari/calctype)). This repo is a refactored
 amalgamation of both, with the original tools ported to a C++ CLI.
 
 ## libcalctype
