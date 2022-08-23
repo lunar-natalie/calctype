@@ -95,13 +95,30 @@ export LIBPATHS	:= $(foreach dir,$(LIB_DIRS),-L$(dir)/lib) \
 ### Targets
 ### ============================================================================
 
-.PHONY: all install_watch uninstall clean
+.PHONY: all install uninstall clean
 
 all: $(BUILD_DIR)
 	@make --no-print-directory -C $(BUILD_DIR) -f $(CURDIR)/Makefile
 
 $(BUILD_DIR):
 	@mkdir $@
+
+install:
+ifeq ($(strip $(INSTALL_PREFIX)),)
+$(error INSTALL_PREFIX is not set in your environment. \
+	Run `export INSTALL_PREFIX=<PATH>` or add `INSTALL_PREFIX=<PATH>` to '.env.mk')
+endif
+	install -m 644 "$(OUTPUT).a" "$(INSTALL_PREFIX)/lib"
+	cp -R -T include "$(INSTALL_PREFIX)/include/calctype"
+
+uninstall:
+ifeq ($(strip $(INSTALL_PREFIX)),)
+$(error INSTALL_PREFIX is not set in your environment. \
+	Run `export INSTALL_PREFIX=<PATH>` or add `INSTALL_PREFIX=<PATH>` to '.env.mk')
+endif
+	$(call rmdir,$(INSTALL_PREFIX)/include/calctype)
+	$(call rm,$(INSTALL_PREFIX)/lib/$(OUTPUT_NAME).a)
+
 
 clean:
 	$(call rmdir,$(BUILD_DIR))

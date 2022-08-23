@@ -11,6 +11,26 @@
             }
         },
         {
+            "label": "Install library",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "make",
+                "install"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Uninstall library",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "make",
+                "uninstall"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "Clean build environment",
             "type": "shell",
             "command": "make",

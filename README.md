@@ -23,6 +23,7 @@ amalgamation of both, with the original tools ported to a C++ CLI.
         * [VS Code](#vs-code)
     * [Installation](#installation)
         * [Additional requirements](#additional-requirements)
+        * [Configuration](#configuration-1)
         * [Install](#install)
             * [Standalone](#standalone-1)
             * [VS Code](#vs-code-1)
@@ -76,11 +77,20 @@ make
 
 ## Installation
 
-(TODO)
-
 ### Additional requirements
 
+* `coreutils`
 * `sudo`
+
+### Configuration
+
+* Add the following to `.env.mk`:
+
+    ```Makefile
+    INSTALL_PREFIX=<PATH>
+    ```
+
+* Common install prefixes include `/usr` and `/usr/local`
 
 ### Install
 
