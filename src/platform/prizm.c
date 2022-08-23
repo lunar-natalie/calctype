@@ -91,5 +91,7 @@ void calctype_draw_glyph(struct CalcTypeGlyphMetadata *glyph, unsigned int x,
 
 			*dest = new_data;
 		}
+
+		dest += increment;
 	}
 }
