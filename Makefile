@@ -23,7 +23,7 @@ include $(FXCGSDK)/toolchain/prizm_rules
 
 OUTPUT_NAME	:= libcalctype
 BUILD_DIR	:= build
-SOURCE_DIRS	:= src
+SOURCE_DIRS	:= src src/platform # TODO(Natalie): Check platform.
 DATA_DIRS	:= data
 INCLUDE_DIRS	:= include
 
