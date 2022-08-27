@@ -35,10 +35,10 @@
 #include <boost/program_options/parsers.hpp>
 #include <boost/program_options/variables_map.hpp>
 
-namespace b_options = boost::program_options;
+namespace po = boost::program_options;
 
 /// @brief Stores data for a program option.
-/// Used as a dynamic container for boost::program_options.
+/// Used as a dynamic container for boost::program_options (po).
 class Option {
 public:
 	/// @brief Constructs a new Option object.
@@ -54,7 +54,7 @@ public:
 
 	/// @brief Gets the full name of the option to add to a description.
 	/// Uses the format 'LONG' or 'LONG,SHORT' for use with
-	/// b_options::options_description::add_options.
+	/// po::options_description::add_options.
 	/// @return Full name (internal data).
 	const char* name() noexcept;
 
@@ -63,7 +63,7 @@ public:
 	/// Used with a notified variables map containing parsed option data.
 	/// @param vm Variables map of long-format option names to values.
 	/// @return Number of occurrences.
-	size_t count(b_options::variables_map vm) const noexcept
+	size_t count(po::variables_map vm) const noexcept
 	{
 		return vm.count(long_name);
 	}
@@ -83,7 +83,7 @@ template<typename T>
 class PositionalOption {
 public:
 	/// @brief Constructs a new PositionalOption object.
-	/// Stores option data for use with b_options.
+	/// Stores option data for use with po.
 	/// @param name
 	PositionalOption(const char* name, int max_count = 1)
 		: internal_name{name}, max_count{max_count}
@@ -108,7 +108,7 @@ public:
 	/// Used with a notified variables map containing parsed option data.
 	/// @param vm Variables map of long-format option names to values.
 	/// @return Number of occurrences.
-	size_t count(b_options::variables_map vm) const noexcept
+	size_t count(po::variables_map vm) const noexcept
 	{
 		return vm.count(internal_name);
 	}
@@ -117,7 +117,7 @@ public:
 	/// Used with a notified variables map containing parsed option data.
 	/// @param vm Variables map of long-format option names to values.
 	/// @return Value.
-	T value(b_options::variables_map vm) const
+	T value(po::variables_map vm) const
 		noexcept
 	{
 		return vm[internal_name].as<T>();
@@ -196,40 +196,39 @@ int parse_options(int argc, char* argv[]) noexcept
 		<< _("Mandatory arguments to long options are mandatory for short options too");
 
 	// Declare supported options.
-	b_options::options_description desc(caption.str());
+	po::options_description desc(caption.str());
 	desc.add_options()
 		(options::output_name.name(),
-			b_options::value<std::string>(&font_config.output_name),
+			po::value<std::string>(&font_config.output_name),
 			options::output_name.description)
 		(options::output_dir.name(),
-			b_options::value<std::string>(&font_config.output_dir),
+			po::value<std::string>(&font_config.output_dir),
 			options::output_dir.description)
+		(options::input_file.name(),
+			po::value<std::string>(&font_config.input_file))
 		(options::help.name(), options::help.description)
 		(options::version.name(), options::version.description);
 
 	// Declare supported positional options.
-	// TODO(Natalie): Fix
-	b_options::positional_options_description p_desc;
+	po::positional_options_description p_desc;
 	p_desc.add(options::input_file.name(),
 		options::input_file.get_max_count());
 
 	// Process options.
 	try {
-		b_options::variables_map vm;
-		b_options::store(b_options::command_line_parser(argc, argv)
+		po::variables_map vm;
+		po::store(po::command_line_parser(argc, argv)
 			.options(desc).positional(p_desc).run(), vm);
-		b_options::notify(vm);
+		po::notify(vm);
 
-		if (options::input_file.count(vm)) {
-			font_config.input_file = options::input_file.value(vm);
-		} else if (options::help.count(vm)) {
+		if (options::help.count(vm)) {
 			std::cout << desc << std::endl;
 			return EXIT_SUCCESS;
 		} else if (options::version.count(vm)) {
 			show_version();
 			return EXIT_SUCCESS;
 		}
-	} catch (b_options::unknown_option& e) {
+	} catch (po::unknown_option& e) {
 		BOOST_LOG_SEV(log, LogLevel::fatal)
 			<< argv[0] << _(": unrecognized option '") << e.get_option_name() << _("'") << std::endl
 			<< _("Try '") << argv[0] << _(" --help' for more information.") << std::endl;
